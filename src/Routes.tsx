@@ -11,7 +11,7 @@ const routes = [
         element: Restaurants,
     },
     {
-        path: "/resturants/create",
+        path: "/restaurants/create",
         element: ResturantForm,
     }
 ]
