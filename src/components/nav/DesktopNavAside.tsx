@@ -1,9 +1,9 @@
-import React from 'react'
 import { Fragment, useContext } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import classNames from 'lib/classNames'
 import { NavContext } from './Nav'
+import { AppContext } from 'contexts/AppContext'
 
 
 const DesktopNavAside = () => {
@@ -12,6 +12,10 @@ const DesktopNavAside = () => {
         userNavigation,
         user,
     } = useContext(NavContext);
+
+    const {
+        onSignOut
+    } = useContext(AppContext);
 
     return (
         <>
@@ -72,6 +76,19 @@ const DesktopNavAside = () => {
                                         </Menu.Item>
                                     ))
                                 }
+                                <Menu.Item>
+                                    {({ active }) => (
+                                        <a
+                                            onClick={onSignOut}
+                                            className={classNames(
+                                                active ? 'bg-gray-100' : '',
+                                                'block px-4 py-2 text-sm text-gray-700'
+                                            )}
+                                        >
+                                            Sign out
+                                        </a>
+                                    )}
+                                </Menu.Item>
                             </Menu.Items>
                         </Transition>
                     </Menu>
