@@ -4,11 +4,13 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import classNames from 'lib/classNames'
 import { NavContext } from './Nav'
 import { AppContext } from 'contexts/AppContext'
+import { Link } from 'react-router-dom'
 
 
 const DesktopNavAside = () => {
 
     const {
+        open,
         userNavigation,
         user,
     } = useContext(NavContext);
@@ -24,11 +26,13 @@ const DesktopNavAside = () => {
                 {/* Mobile menu button */}
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-indigo-600 p-2 text-indigo-200 hover:bg-indigo-500 hover:bg-opacity-75 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600">
                     <span className="sr-only">Open main menu</span>
-                    {open ? (
-                        <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                    ) : (
-                        <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-                    )}
+                    {
+                        open ? (
+                            <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                        ) : (
+                            <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                        )
+                    }
                 </Disclosure.Button>
             </div>
             <div className="hidden lg:ml-4 lg:block">
@@ -62,32 +66,36 @@ const DesktopNavAside = () => {
                                 {
                                     userNavigation.map((item) => (
                                         <Menu.Item key={item.name}>
-                                            {({ active }) => (
-                                                <a
-                                                    href={item.href}
-                                                    className={classNames(
-                                                        active ? 'bg-gray-100' : '',
-                                                        'block px-4 py-2 text-sm text-gray-700'
-                                                    )}
-                                                >
-                                                    {item.name}
-                                                </a>
-                                            )}
+                                            {
+                                                ({ active }) => (
+                                                    <Link
+                                                        to={item.href}
+                                                        className={classNames(
+                                                            active ? 'bg-gray-100' : '',
+                                                            'block px-4 py-2 text-sm text-gray-700'
+                                                        )}
+                                                    >
+                                                        {item.name}
+                                                    </Link>
+                                                )
+                                            }
                                         </Menu.Item>
                                     ))
                                 }
                                 <Menu.Item>
-                                    {({ active }) => (
-                                        <a
-                                            onClick={onSignOut}
-                                            className={classNames(
-                                                active ? 'bg-gray-100' : '',
-                                                'block px-4 py-2 text-sm text-gray-700'
-                                            )}
-                                        >
-                                            Sign out
-                                        </a>
-                                    )}
+                                    {
+                                        ({ active }) => (
+                                            <a
+                                                onClick={onSignOut}
+                                                className={classNames(
+                                                    active ? 'bg-gray-100' : '',
+                                                    'block px-4 py-2 text-sm text-gray-700'
+                                                )}
+                                            >
+                                                Sign out
+                                            </a>
+                                        )
+                                    }
                                 </Menu.Item>
                             </Menu.Items>
                         </Transition>

@@ -1,18 +1,17 @@
+import { log } from "console";
 import React from "react";
 
-let host = "";
-
-if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') host = "http://localhost:8000";
+let host = "http://localhost:8000";
 
 const apiHost = `${host}/api`;
 
-const useFetch = (path: string, onSuccess: (body: any, headers?: Headers) => void) => {
+const useFetch = (path: string, onSuccess: (body: any, headers?: Headers) => void, onError?: (res: any) => void) => {
 
     const [isFetching, setIsFetching] = React.useState(false);
 
     const onFetch = async (method = 'get', body = undefined) => {
         const token = localStorage.getItem("token");
-        const _path = path.endsWith('/') ? path.substr(0, path.length - 1) : path;
+        const _path = path.endsWith('/') ? path.substr(0, path.length - 1) : path;        
         try {
             setIsFetching(true);
             const res = await fetch(`${apiHost}${_path}`, {
@@ -24,9 +23,12 @@ const useFetch = (path: string, onSuccess: (body: any, headers?: Headers) => voi
                 },
                 body: JSON.stringify(body)
             });
+            console.log(`${path}: ${res.status}`);                        
             if (res.ok) {
                 const body = await res.json();
                 onSuccess(body, res.headers);
+            }else{
+                if(onError) onError(res);
             }
         } catch (e) {
             console.log(e);

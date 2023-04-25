@@ -4,6 +4,7 @@ import ResturantForm from 'pages/restaurants/form/RestaurantForm';
 import Login from 'pages/login/Login';
 import useCurrentUser from 'hooks/useCurrentUser';
 import { AppContext } from 'contexts/AppContext';
+import Plans from 'pages/plans/index/Plans';
 
 const routes = [
     {
@@ -13,6 +14,10 @@ const routes = [
     {
         path: "/restaurants/create",
         element: ResturantForm,
+    },
+    {
+        path: "/plans",
+        element: Plans,
     }
 ]
 
@@ -31,6 +36,12 @@ const Routes = () => {
         onSignOut,
         setCurrentUser,
     }
+
+    console.log(isLoading);
+    
+    if(isLoading) return null;
+
+    
 
     return (
         <AppContext.Provider value={appContext}>

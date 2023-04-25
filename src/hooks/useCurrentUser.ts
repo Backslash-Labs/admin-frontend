@@ -11,6 +11,8 @@ const useCurrentUser = () => {
     } = useFetch("/user", (body) => {
         setCurrentUser(body);
         setIsLoading(false);
+    }, (res) => {
+        setIsLoading(false);
     });
 
     useEffect(() => {
