@@ -6,6 +6,7 @@ import useCurrentUser from 'hooks/useCurrentUser';
 import { AppContext } from 'contexts/AppContext';
 import Plans from 'pages/plans/index/Plans';
 import PlanForm from 'pages/plans/form/PlanForm';
+import Users from 'pages/users/index/Users';
 
 const routes = [
     {
@@ -23,6 +24,10 @@ const routes = [
     {
         path: "/plans/create",
         element: PlanForm,
+    },
+    {
+        path: "/users",
+        element: Users,
     }
 ]
 

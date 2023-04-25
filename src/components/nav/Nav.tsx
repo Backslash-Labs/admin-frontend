@@ -15,7 +15,7 @@ const user = {
 const navigation = [
     { name: 'Restaurants', href: '/', },
     { name: 'Plans', href: '/plans',  },
-    { name: 'Users', href: '#',  },
+    { name: 'Users', href: '/users',  },
 ]
 const userNavigation = [
     { name: 'Your Profile', href: '#' },

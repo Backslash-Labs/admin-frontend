@@ -8,7 +8,7 @@ export interface TableProps {
   rows?: any[]
   title: string
   canAdd?: boolean
-  addTitle: string
+  addTitle?: string
   path?: string
 }
 
