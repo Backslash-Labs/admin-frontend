@@ -5,6 +5,7 @@ import Login from 'pages/login/Login';
 import useCurrentUser from 'hooks/useCurrentUser';
 import { AppContext } from 'contexts/AppContext';
 import Plans from 'pages/plans/index/Plans';
+import PlanForm from 'pages/plans/form/PlanForm';
 
 const routes = [
     {
@@ -18,6 +19,10 @@ const routes = [
     {
         path: "/plans",
         element: Plans,
+    },
+    {
+        path: "/plans/create",
+        element: PlanForm,
     }
 ]
 
@@ -36,12 +41,8 @@ const Routes = () => {
         onSignOut,
         setCurrentUser,
     }
-
-    console.log(isLoading);
     
-    if(isLoading) return null;
-
-    
+    if(isLoading) return null;    
 
     return (
         <AppContext.Provider value={appContext}>
