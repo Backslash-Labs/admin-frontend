@@ -1,9 +1,8 @@
 import useFetch from "lib/useFetch"
-import Table, { TableProps } from "./Table"
+import Table, { TableProps } from "./table/Table"
 import { FC, useEffect, useState } from "react"
 
 export interface LoadingTableProps extends TableProps {
-    path: string
 }
 
 const LoadingTable: FC<LoadingTableProps> = ({path, ...others}) => {
@@ -27,6 +26,7 @@ const LoadingTable: FC<LoadingTableProps> = ({path, ...others}) => {
 
     return(
         <Table
+            path={path}
             rows={rows}
             {...others} 
         />

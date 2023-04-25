@@ -11,7 +11,7 @@ const useFetch = (path: string, onSuccess: (body: any, headers?: Headers) => voi
 
     const onFetch = async (method = 'get', body = undefined) => {
         const token = localStorage.getItem("token");
-        const _path = path.endsWith('/') ? path.substr(0, path.length - 1) : path;        
+        const _path = path.endsWith('/') ? path.substr(0, path.length - 1) : path;
         try {
             setIsFetching(true);
             const res = await fetch(`${apiHost}${_path}`, {
@@ -23,17 +23,21 @@ const useFetch = (path: string, onSuccess: (body: any, headers?: Headers) => voi
                 },
                 body: JSON.stringify(body)
             });
-            console.log(`${path}: ${res.status}`);                        
+            console.log(`${path}: ${res.status}`);
             if (res.ok) {
-                const body = await res.json();
-                onSuccess(body, res.headers);
-            }else{
-                if(onError) onError(res);
+                try {
+                    const body = await res.json();
+                    onSuccess(body, res.headers);
+                }catch(e){
+                    onSuccess({}, res.headers);
+                }
+            } else {
+                if (onError) onError(res);
             }
         } catch (e) {
             console.log(e);
-            
-        }finally{
+
+        } finally {
             setIsFetching(false)
         }
     }
@@ -42,11 +46,14 @@ const useFetch = (path: string, onSuccess: (body: any, headers?: Headers) => voi
 
     const onPut = async (body?: any) => onFetch("put", body)
 
+    const onDelete = async (body?: any) => onFetch("delete", body)
+
     return {
         onFetch,
         isFetching,
         onPost,
         onPut,
+        onDelete,
     }
 
 }
