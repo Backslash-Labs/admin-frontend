@@ -38,7 +38,7 @@ const MobileNav = () => {
                     ))
                 }
             </div>
-            <div className="border-t border-indigo-700 pb-3 pt-4">
+            <div className="border-t border-green-850 pb-3 pt-4">
                 <div className="flex items-center px-5">
                     <div className="flex-shrink-0">
                         <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />

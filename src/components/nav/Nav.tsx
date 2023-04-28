@@ -33,7 +33,7 @@ const Nav = () => {
     }
 
     return (
-        <Disclosure as="nav" className="border-b border-indigo-300 border-opacity-25 bg-indigo-600 lg:border-none">
+        <Disclosure as="nav" className="border-b border-indigo-300 border-opacity-25 bg-green-850 lg:border-none">
             {({ open }) => (
                 <NavContext.Provider value={{
                     ...navContext,
@@ -46,7 +46,7 @@ const Nav = () => {
                                     <div className="flex-shrink-0">
                                         <img
                                             className="block h-8 w-8"
-                                            src="/logo.svg"
+                                            src="/LogoFullWhite.svg"
                                             alt="Your Company"
                                         />
                                     </div>

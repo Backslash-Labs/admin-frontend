@@ -24,7 +24,7 @@ const DesktopNavAside = () => {
 
             <div className="flex lg:hidden">
                 {/* Mobile menu button */}
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-indigo-600 p-2 text-indigo-200 hover:bg-indigo-500 hover:bg-opacity-75 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600">
+                <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-green-850 p-2 text-indigo-200 hover:bg-indigo-500 hover:bg-opacity-75 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600">
                     <span className="sr-only">Open main menu</span>
                     {
                         open ? (
@@ -39,7 +39,7 @@ const DesktopNavAside = () => {
                 <div className="flex items-center">
                     <button
                         type="button"
-                        className="flex-shrink-0 rounded-full bg-indigo-600 p-1 text-indigo-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600"
+                        className="flex-shrink-0 rounded-full bg-green-500 p-1 text-green-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-green-600"
                     >
                         <span className="sr-only">View notifications</span>
                         <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -48,7 +48,7 @@ const DesktopNavAside = () => {
                     {/* Profile dropdown */}
                     <Menu as="div" className="relative ml-3 flex-shrink-0">
                         <div>
-                            <Menu.Button className="flex rounded-full bg-indigo-600 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600">
+                            <Menu.Button className="flex rounded-full bg-green-600 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-green-600">
                                 <span className="sr-only">Open user menu</span>
                                 <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
                             </Menu.Button>
