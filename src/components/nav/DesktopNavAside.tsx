@@ -6,7 +6,10 @@ import { NavContext } from './Nav'
 import { AppContext } from 'contexts/AppContext'
 import { Link } from 'react-router-dom'
 
-
+/**
+ * DesktopNavAside contains components found on the right side of the nav
+ * 
+ */
 const DesktopNavAside = () => {
 
     const {

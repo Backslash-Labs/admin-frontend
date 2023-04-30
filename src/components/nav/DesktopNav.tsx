@@ -1,8 +1,11 @@
-import classNames from "lib/classNames";
 import { useContext } from "react";
 import { NavContext } from "./Nav";
-import { Link } from "react-router-dom";
 import NavLink from "./NavLink";
+
+/**
+ * DesktopNav contains routes for desktop monitors
+ * 
+ */
 
 const DesktopNav = () => {
 
