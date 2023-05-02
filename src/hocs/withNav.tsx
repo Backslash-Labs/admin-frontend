@@ -21,8 +21,8 @@ const withNav = (Component) => {
                     </div>
 
                     <main className="-mt-32">
-                        <div className="mx-auto max-w-7xl px-4 pb-12 border border-green-800 sm:px-6 lg:px-8 h-96 ">{/* Your content */}
-                            <div className='bg-white rounded-md border border-red-800 h-full p-8'>
+                        <div className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8 h-96 ">{/* Your content */}
+                            <div className='bg-white rounded-md border border-red-800 p-8'>
                                 <Component {...props} />
                             </div>
                         </div>
