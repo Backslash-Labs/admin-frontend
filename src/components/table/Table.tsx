@@ -10,6 +10,8 @@ export interface TableProps {
   canAdd?: boolean
   addTitle?: string
   path?: string
+  canEdit?: boolean
+  canDelete?: boolean
 }
 
 const Table: FC<TableProps> = (props) => {
@@ -19,7 +21,9 @@ const Table: FC<TableProps> = (props) => {
     rows: initRows,
     title,
     addTitle,
-    canAdd = true
+    canAdd = true,
+    canEdit = true,
+    canDelete = true,
   } = props;
 
   const [rows, setRows] = useState([]);
@@ -76,12 +80,20 @@ const Table: FC<TableProps> = (props) => {
                             )
                           })
                         }
-                        <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                          <span className="sr-only">Edit</span>
-                        </th>
-                        <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                          <span className="sr-only">Delete</span>
-                        </th>
+                        {
+                          canEdit ?
+                            <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                              <span className="sr-only">Edit</span>
+                            </th>
+                            : null
+                        }
+                        {
+                          canDelete ?
+                            <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                              <span className="sr-only">Delete</span>
+                            </th>
+                            : null
+                        }
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 bg-white">

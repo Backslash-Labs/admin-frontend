@@ -9,6 +9,8 @@ const Restaurants = () => {
         headers={[
           "Name",
           "Email",
+          "Workspaces",
+          "Users",
         ]}
         title="Restaurants"
         addTitle="Add Restaurant"

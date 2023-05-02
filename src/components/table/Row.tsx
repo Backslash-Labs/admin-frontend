@@ -1,6 +1,7 @@
 import { FC, useContext } from "react";
 import { TableContext } from "./TableContext";
 import useFetch from "lib/useFetch";
+import { Link } from "react-router-dom";
 
 export interface RowProps {
     row: any
@@ -14,6 +15,8 @@ const Row: FC<RowProps> = ({ row, i }) => {
         path,
         rows,
         setRows,
+        canEdit = true,
+        canDelete = true,
     } = useContext(TableContext);
 
     const {
@@ -40,16 +43,24 @@ const Row: FC<RowProps> = ({ row, i }) => {
                     )
                 })
             }
-            <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                    Edit
-                </a>
-            </td>
-            <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                <button onClick={handleDelete} className="text-indigo-600 hover:text-indigo-900">
-                    Delete
-                </button>
-            </td>
+            {
+                canEdit ?
+                    <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                        <Link to={`${path}/${row.id}/edit`} className="text-green-600 hover:text-green-900">
+                            Edit
+                        </Link>
+                    </td>
+                    : null
+            }
+            {
+                canDelete ?
+                    <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                        <button onClick={handleDelete} className="text-green-600 hover:text-green-900">
+                            Delete
+                        </button>
+                    </td>
+                    : null
+            }
         </tr>
     )
 }

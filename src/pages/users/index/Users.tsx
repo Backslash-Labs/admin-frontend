@@ -8,9 +8,11 @@ const Users = () => {
                 path="/admin/users"
                 headers={[
                     "Name",
-                    "Price",
+                    "Email",
                 ]}
                 title="Users"
+                canEdit={false}
+                canAdd={false}
             />
         </>
     )
