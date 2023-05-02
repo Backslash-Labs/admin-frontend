@@ -12,26 +12,32 @@ const routes = [
     {
         path: "/",
         element: Restaurants,
+        name: "Restaurants",
     },
     {
         path: "/restaurants/create",
         element: ResturantForm,
+        name: "Restaurants",
     },
     {
         path: "/plans",
         element: Plans,
+        name: "Plans",
     },
     {
         path: "/plans/create",
         element: PlanForm,
+        name: "Plans",
     },
     {
         path: "/users",
         element: Users,
+        name: "Users",
     },
     {
         path: "/restaurants/:id/edit",
         element: ResturantForm,
+        name: "Restaurants",
     },
 ]
 
@@ -62,7 +68,7 @@ const Routes = () => {
                         element={<Login />}
                     />
                     {
-                        routes.map(({ path, element: Element }, i) => {
+                        routes.map(({ path, element: Element, ...others }, i) => {
 
                             if (!isLoading && !currentUser) return (
                                 <Route
@@ -78,7 +84,7 @@ const Routes = () => {
                             return (<Route
                                 key={i}
                                 path={path}
-                                element={<Element />}
+                                element={<Element {...others} />}
                             />)
                         })
                     }
