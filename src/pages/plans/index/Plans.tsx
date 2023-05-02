@@ -12,6 +12,7 @@ const Plans = () => {
                 ]}
                 title="Plans"
                 addTitle="Add Plan"
+                canEdit={false}
             />
         </>
     )

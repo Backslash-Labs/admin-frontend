@@ -12,6 +12,7 @@ export interface TableProps {
   path?: string
   canEdit?: boolean
   canDelete?: boolean
+  editPath?: string
 }
 
 const Table: FC<TableProps> = (props) => {

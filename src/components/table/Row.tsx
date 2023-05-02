@@ -17,6 +17,7 @@ const Row: FC<RowProps> = ({ row, i }) => {
         setRows,
         canEdit = true,
         canDelete = true,
+        editPath,
     } = useContext(TableContext);
 
     const {
@@ -46,7 +47,7 @@ const Row: FC<RowProps> = ({ row, i }) => {
             {
                 canEdit ?
                     <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                        <Link to={`${path}/${row.id}/edit`} className="text-green-600 hover:text-green-900">
+                        <Link to={`${editPath}/${row.id}/edit`} className="text-green-600 hover:text-green-900">
                             Edit
                         </Link>
                     </td>

@@ -14,6 +14,7 @@ const Restaurants = () => {
         ]}
         title="Restaurants"
         addTitle="Add Restaurant"
+        editPath="/restaurants"
       />
     </>
   )

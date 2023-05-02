@@ -28,15 +28,19 @@ const routes = [
     {
         path: "/users",
         element: Users,
-    }
+    },
+    {
+        path: "/restaurants/:id/edit",
+        element: ResturantForm,
+    },
 ]
 
 
 const Routes = () => {
 
     const {
-        isLoading, 
-        currentUser, 
+        isLoading,
+        currentUser,
         onSignOut,
         setCurrentUser,
     } = useCurrentUser();
@@ -46,8 +50,8 @@ const Routes = () => {
         onSignOut,
         setCurrentUser,
     }
-    
-    if(isLoading) return null;    
+
+    if (isLoading) return null;
 
     return (
         <AppContext.Provider value={appContext}>

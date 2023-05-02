@@ -1,10 +1,11 @@
 import PrimaryButton from "base/PrimaryButton";
 import Select from "base/Select";
 import Textfield from "base/Textfield";
-import { useFormik } from "formik";
+import { Formik, useFormik } from "formik";
 import withNav from "hocs/withNav";
 import * as Yup from "yup";
 import useRestaurantForm from "./useRestaurantForm";
+import { useEffect, useState } from "react";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -24,59 +25,68 @@ const validationSchema = Yup.object().shape({
 
 const ResturantForm = () => {
 
+  const [edit, setEdit] = useState(false);
+
   const {
     isFetchingPlans,
     isFetching,
     onSubmit,
     plans,
+    isEditing,
+    restaurant,
+    isFetchingRestaurant,
   } = useRestaurantForm();
 
-  const formik = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      users: 0,
-      workspaces: 0,
-      plan_id: null,
-    },
-    onSubmit,
-    validationSchema
-  });
-
   if (isFetchingPlans) return null;
+
+  if(isFetchingRestaurant) return null;
 
   return (
     <>
       <div>
-        <form action="" onSubmit={formik.handleSubmit}>
-          <Textfield
-            label="Name"
-            formik={formik}
-          />
-          <Textfield
-            label="Email"
-            formik={formik}
-          />
-          <Textfield
-            label="Users"
-            formik={formik}
-          />
-          <Textfield
-            label="Workspaces"
-            formik={formik}
-          />
-          <Select
-            label="Plan"
-            name="plan_id"
-            formik={formik}
-            options={plans.map(({name, id}) => ({ name, value: id}))}
-          />
-          <PrimaryButton
-            isLoading={isFetching}
-          >
-            Add Restaurant
-          </PrimaryButton>
-        </form>
+        <Formik
+          initialValues={{
+            ...restaurant,
+          }}
+          onSubmit={onSubmit}
+          validationSchema={validationSchema}
+        >
+          {
+            (formik) => {
+              return (
+                <form action="" onSubmit={formik.handleSubmit}>
+                  <Textfield
+                    label="Name"
+                    formik={formik}
+                  />
+                  <Textfield
+                    label="Email"
+                    formik={formik}
+                  />
+                  <Textfield
+                    label="Users"
+                    formik={formik}
+                  />
+                  <Textfield
+                    label="Workspaces"
+                    formik={formik}
+                  />
+                  <Select
+                    label="Plan"
+                    name="plan_id"
+                    formik={formik}
+                    options={plans.map(({ name, id }) => ({ name, value: id }))}
+                  />
+                  <PrimaryButton
+                    isLoading={isFetching}
+                  >
+                    Add Restaurant
+                  </PrimaryButton>
+                </form>
+              )
+            }
+          }
+        </Formik>
       </div>
     </>
   )
