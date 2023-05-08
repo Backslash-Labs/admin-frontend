@@ -21,5 +21,5 @@ export default {
     "testPathIgnorePatterns": [
         "/node_modules/",
     ],
-    "setupFiles": ["./setupTest.js"],
+    "setupFiles": ["./tests/setupTest.ts"],
 }
