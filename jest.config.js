@@ -5,7 +5,7 @@ export default {
     "transform": {
         "\\.[jt]sx?$": "ts-jest"
     },
-    testEnvironment: "jsdom",
+    "testEnvironment": "jsdom",
     "moduleFileExtensions": [
         "ts",
         "tsx",
@@ -14,8 +14,12 @@ export default {
         "json",
         "node"
     ],
-    modulePaths: [
-        "<rootDir>/src",
+    "modulePaths": [
+        "<rootDir>",
     ],
     "moduleNameMapper": pathsToModuleNameMapper(config.compilerOptions.paths),
+    "testPathIgnorePatterns": [
+        "/node_modules/",
+    ],
+    "setupFiles": ["./setupTest.js"],
 }

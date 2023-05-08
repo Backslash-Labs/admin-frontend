@@ -18,16 +18,17 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "src",
+    "baseUrl": "./",
     "paths": {
-      "pages/*": ["pages/*"],
-      "components/*": ["components/*"],
-      "lib/*": ["lib/*"],
-      "base/*": ["base/*"],
-      "hocs/*": ["hocs/*"]
+      "pages/*": ["src/pages/*"],
+      "components/*": ["src/components/*"],
+      "lib/*": ["src/lib/*"],
+      "base/*": ["src/base/*"],
+      "hocs/*": ["src/hocs/*"],
+      "contexts/*": ["src/contexts/*"]
     }
   },
   "include": [
-    "src"
+    "./"
   ]
 }
