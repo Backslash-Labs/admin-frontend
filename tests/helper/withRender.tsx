@@ -3,11 +3,10 @@ import { render } from "@testing-library/react"
 import { AppContext } from "../../src/contexts/AppContext"
 import { BrowserRouter, Route, RouterProvider, Routes, createMemoryRouter } from "react-router-dom";
 
-export const withRender = (Component) => {
-
-    const App = () => (
+export const withAppContext = (Component, currentUser = null) => {
+    return (
         <AppContext.Provider value={{
-            currentUser: null,
+            currentUser,
             setCurrentUser: () => { },
             onSignOut: () => { },
         }}>
@@ -15,25 +14,13 @@ export const withRender = (Component) => {
         </AppContext.Provider>
     )
 
-    const router = createMemoryRouter(
-        [
-            {
-                path: "/",
-                element: <App />
-            },
-            {
-                path: "/login",
-                element: <App />
-            }
-        ],
-        {
-            initialEntries: ["/login"]
-        }
-    )
+}
+
+export const withRender = (routes, routerOptions) => {
+
+    const router = createMemoryRouter(routes, routerOptions)
 
     render(<RouterProvider router={router} />)
 
-    return {
-        router
-    }
+    return { router };
 }
