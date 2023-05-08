@@ -25,7 +25,8 @@
       "lib/*": ["src/lib/*"],
       "base/*": ["src/base/*"],
       "hocs/*": ["src/hocs/*"],
-      "contexts/*": ["src/contexts/*"]
+      "contexts/*": ["src/contexts/*"],
+      "hooks/*": ["src/hooks/*"]
     }
   },
   "include": [
