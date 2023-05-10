@@ -22,10 +22,17 @@ const Select: FC<SelectProps> = ({
 
     const inputName = name || label.toLowerCase();
 
-    const inputValue = value || formik ? formik.values[inputName] : undefined;
+    let inputValue = value 
+    
+    if(!inputValue && formik){
+        inputValue = formik.values[inputName]
+    }
 
-    const handleChange = onChange || formik ? formik.handleChange : undefined;
-
+    let handleChange = onChange
+    
+    if(!handleChange && formik){
+        handleChange = formik.handleChange
+    }
 
     const _helperText = helperText || formik ? formik.errors[inputName] : undefined;
 
