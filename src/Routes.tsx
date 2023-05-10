@@ -4,9 +4,9 @@ import ResturantForm from 'pages/restaurants/form/RestaurantForm';
 import Login from 'pages/login/Login';
 import useCurrentUser from 'hooks/useCurrentUser';
 import { AppContext } from 'contexts/AppContext';
-import Plans from 'pages/plans/index/Plans';
-import PlanForm from 'pages/plans/form/PlanForm';
 import Users from 'pages/users/index/Users';
+import ShowRestaurants from 'pages/restaurants/show/ShowRestaurants';
+import BranchForm from 'pages/restaurants/show/branchesForm/BranchForm';
 
 const routes = [
     {
@@ -20,16 +20,6 @@ const routes = [
         name: "Restaurants",
     },
     {
-        path: "/plans",
-        element: Plans,
-        name: "Plans",
-    },
-    {
-        path: "/plans/create",
-        element: PlanForm,
-        name: "Plans",
-    },
-    {
         path: "/users",
         element: Users,
         name: "Users",
@@ -37,6 +27,16 @@ const routes = [
     {
         path: "/restaurants/:id/edit",
         element: ResturantForm,
+        name: "Restaurants",
+    },
+    {
+        path: "/restaurants/:id",
+        element: ShowRestaurants,
+        name: "Restaurants",
+    },
+    {
+        path: "/restaurants/:restaurant_id/branches/create",
+        element: BranchForm,
         name: "Restaurants",
     },
 ]
