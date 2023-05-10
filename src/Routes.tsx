@@ -4,8 +4,6 @@ import ResturantForm from 'pages/restaurants/form/RestaurantForm';
 import Login from 'pages/login/Login';
 import useCurrentUser from 'hooks/useCurrentUser';
 import { AppContext } from 'contexts/AppContext';
-import Plans from 'pages/plans/index/Plans';
-import PlanForm from 'pages/plans/form/PlanForm';
 import Users from 'pages/users/index/Users';
 
 const routes = [
@@ -18,16 +16,6 @@ const routes = [
         path: "/restaurants/create",
         element: ResturantForm,
         name: "Restaurants",
-    },
-    {
-        path: "/plans",
-        element: Plans,
-        name: "Plans",
-    },
-    {
-        path: "/plans/create",
-        element: PlanForm,
-        name: "Plans",
     },
     {
         path: "/users",
