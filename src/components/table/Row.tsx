@@ -18,6 +18,7 @@ const Row: FC<RowProps> = ({ row, i }) => {
         canEdit = true,
         canDelete = true,
         editPath,
+        onClick,
     } = useContext(TableContext);
 
     const {
@@ -31,8 +32,12 @@ const Row: FC<RowProps> = ({ row, i }) => {
         onDelete();
     }
 
+    const handleClick = () => {
+        onClick(row);
+    }
+
     return (
-        <tr>
+        <tr onClick={handleClick}>
             {
                 headers.map((header, j) => {
                     return (

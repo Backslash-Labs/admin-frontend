@@ -5,6 +5,7 @@ import Login from 'pages/login/Login';
 import useCurrentUser from 'hooks/useCurrentUser';
 import { AppContext } from 'contexts/AppContext';
 import Users from 'pages/users/index/Users';
+import ShowRestaurants from 'pages/restaurants/show/ShowRestaurants';
 
 const routes = [
     {
@@ -25,6 +26,11 @@ const routes = [
     {
         path: "/restaurants/:id/edit",
         element: ResturantForm,
+        name: "Restaurants",
+    },
+    {
+        path: "/restaurants/:id",
+        element: ShowRestaurants,
         name: "Restaurants",
     },
 ]
