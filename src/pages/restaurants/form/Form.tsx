@@ -30,6 +30,23 @@ const Form = ({ formik }) => {
             let selectedFeatureIds = selectedPlan.plan_features.map((feature) => feature.feature.id);
 
             setSelectedFeatures([...selectedFeatureIds]);
+
+            console.log(selectedPlan);
+            
+
+            formik.handleChange({
+                target: {
+                    name: "allowed_users",
+                    value: selectedPlan.allowed_users,
+                }
+            })
+            formik.handleChange({
+                target: {
+                    name: "allowed_branches",
+                    value: selectedPlan.allowed_branches,
+                }
+            })
+
         }else{
             setSelectedFeatures([ ]);
         }
