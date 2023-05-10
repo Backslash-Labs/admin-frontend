@@ -14,6 +14,7 @@ export interface TableProps {
   canDelete?: boolean
   editPath?: string
   onClick?: (row: any) => void
+  createPath?: string
 }
 
 const Table: FC<TableProps> = (props) => {
@@ -26,6 +27,7 @@ const Table: FC<TableProps> = (props) => {
     canAdd = true,
     canEdit = true,
     canDelete = true,
+    createPath
   } = props;
 
   const [rows, setRows] = useState([]);
@@ -39,6 +41,8 @@ const Table: FC<TableProps> = (props) => {
     rows,
     setRows,
   }
+
+  const _createPath = createPath || `/${title.toLowerCase()}/create`;
 
   return (
     <>
@@ -58,7 +62,7 @@ const Table: FC<TableProps> = (props) => {
                   <Link
                     type="button"
                     className="block rounded-md bg-green-850 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
-                    to={`/${title.toLowerCase()}/create`}
+                    to={_createPath}
                   >
                     {addTitle}
                   </Link>

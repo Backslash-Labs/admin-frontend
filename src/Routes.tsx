@@ -6,6 +6,7 @@ import useCurrentUser from 'hooks/useCurrentUser';
 import { AppContext } from 'contexts/AppContext';
 import Users from 'pages/users/index/Users';
 import ShowRestaurants from 'pages/restaurants/show/ShowRestaurants';
+import BranchForm from 'pages/restaurants/show/branchesForm/BranchForm';
 
 const routes = [
     {
@@ -31,6 +32,11 @@ const routes = [
     {
         path: "/restaurants/:id",
         element: ShowRestaurants,
+        name: "Restaurants",
+    },
+    {
+        path: "/restaurants/:restaurant_id/branches/create",
+        element: BranchForm,
         name: "Restaurants",
     },
 ]

@@ -8,6 +8,8 @@ const ShowRestaurants = () => {
         id
     } = useParams();
 
+    const path = `/restaurants/${id}/branches`;
+
     return (
         <>
             <LoadingTable
@@ -17,7 +19,9 @@ const ShowRestaurants = () => {
                 ]}
                 title="Branches"
                 addTitle="Add Branch"
-                editPath={`/restaurants/${id}/branches`}
+                editPath={`${path}`}
+                createPath={`${path}/create`}
+                canEdit={false}
             />
         </>
     )
