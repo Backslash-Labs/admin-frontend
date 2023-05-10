@@ -79,6 +79,15 @@ const Table: FC<TableProps> = (props) => {
                       <tr>
                         {
                           headers.map((header, i) => {
+
+                            if (typeof header === 'object')
+
+                              return (
+                                <th key={i} scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                  {header.name}
+                                </th>
+                              )
+
                             return (
                               <th key={i} scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                 {header}

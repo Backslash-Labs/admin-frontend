@@ -40,6 +40,15 @@ const Row: FC<RowProps> = ({ row, i }) => {
         <tr onClick={handleClick}>
             {
                 headers.map((header, j) => {
+
+                    if (typeof header === "object") return (
+                        <td key={j} className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                            {
+                                row[header.key.toLowerCase()]
+                            }
+                        </td>
+                    )
+
                     return (
                         <td key={j} className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                             {
