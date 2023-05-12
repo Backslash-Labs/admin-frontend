@@ -12,7 +12,7 @@ const Users = () => {
                 ]}
                 title="Users"
                 canEdit={false}
-                canAdd={false}
+                addTitle="Add User"
             />
         </>
     )

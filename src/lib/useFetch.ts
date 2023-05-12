@@ -5,7 +5,7 @@ let host = "http://localhost:8000";
 
 const apiHost = `${host}/api`;
 
-const useFetch = (path: string, onSuccess: (body: any, headers?: Headers) => void, onError?: (res: any) => void) => {
+const useFetch = (path: string, onSuccess: (body: any, headers?: Headers) => void, onError?: (res?: any) => void) => {
 
     const [isFetching, setIsFetching] = React.useState(false);
 
@@ -36,7 +36,7 @@ const useFetch = (path: string, onSuccess: (body: any, headers?: Headers) => voi
             }
         } catch (e) {
             console.log(e);
-
+            if (onError) onError();
         } finally {
             setIsFetching(false)
         }
