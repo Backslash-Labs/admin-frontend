@@ -1,40 +1,24 @@
-import { FC, InputHTMLAttributes, SelectHTMLAttributes } from "react";
+import useInput, { IUseInput } from "lib/useInput";
+import { FC } from "react";
 
-export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
-    label?: string
-    formik?: any
+export interface SelectProps extends IUseInput {
     options: any[]
-    helperText?: string
 }
 
-const Select: FC<SelectProps> = ({
-    label,
-    id,
-    name,
-    value,
-    formik,
-    onChange,
-    options,
-    helperText,
-}) => {
+const Select: FC<SelectProps> = (props) => {
 
-    let inputId = id || label.toLowerCase();
+    const {
+        label,
+        options,
+    } = props
 
-    const inputName = name || label.toLowerCase();
-
-    let inputValue = value 
-    
-    if(!inputValue && formik){
-        inputValue = formik.values[inputName]
-    }
-
-    let handleChange = onChange
-    
-    if(!handleChange && formik){
-        handleChange = formik.handleChange
-    }
-
-    const _helperText = helperText || formik ? formik.errors[inputName] : undefined;
+    const {
+        inputName,
+        inputId,
+        inputValue,
+        handleChange,
+        inputHelperText,
+    } = useInput(props);
 
     return (
         <div className="">
@@ -61,7 +45,7 @@ const Select: FC<SelectProps> = ({
                     }
                 </select>
             </div>
-            <p>{_helperText}</p>
+            <p>{inputHelperText}</p>
         </div>
     )
 }
