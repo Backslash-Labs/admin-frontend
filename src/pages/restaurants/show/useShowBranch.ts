@@ -16,7 +16,7 @@ const useShowBranch = () => {
     const {
         onFetch,
         isFetching,
-    } = useFetch(`/admin/companies/${id}`, setRestaurant)
+    } = useFetch(`/admin/restaurants/${id}`, setRestaurant)
 
     useEffect(() => {
         onFetch()

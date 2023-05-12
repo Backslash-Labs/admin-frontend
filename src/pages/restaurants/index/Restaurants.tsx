@@ -11,7 +11,7 @@ const Restaurants = () => {
   return (
     <>
       <LoadingTable
-        path="/admin/companies"
+        path="/admin/restaurants"
         headers={[
           "Name",
           "Email",

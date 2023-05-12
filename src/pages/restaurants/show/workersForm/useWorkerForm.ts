@@ -13,7 +13,7 @@ const useWorkerForm = () => {
     const {
         onPost,
         isFetching,
-    } = useFetch(`/admin/companies/${restaurant_id}/workers`, () => {
+    } = useFetch(`/admin/restaurants/${restaurant_id}/workers`, () => {
         navigate(`/restaurants/${restaurant_id}`);
     })
 
@@ -26,7 +26,7 @@ const useWorkerForm = () => {
 
     const {
         onFetch,
-    } = useFetch(`/admin/companies/${restaurant_id}/branches`, (body) => {
+    } = useFetch(`/admin/restaurants/${restaurant_id}/branches`, (body) => {
         setBranches(body)
     })
 

@@ -31,7 +31,7 @@ const useRestaurantForm = () => {
     const {
         onFetch: onFetchRestaurant,
         isFetching: isFetchingRestaurant,
-    } = useFetch(`/admin/companies/${id}`, (body) => {
+    } = useFetch(`/admin/restaurants/${id}`, (body) => {
         setRestaurant({ ...body })
     });
 
@@ -50,7 +50,7 @@ const useRestaurantForm = () => {
     const {
         onPost,
         isFetching,
-    } = useFetch("/admin/companies", () => {
+    } = useFetch("/admin/restaurants", () => {
         navigate("/");
     })
 

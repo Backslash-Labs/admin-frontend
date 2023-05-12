@@ -27,7 +27,7 @@ const ShowRestaurants = () => {
                 </div>
             </div>
             <LoadingTable
-                path={`/admin/companies/${id}/branches`}
+                path={`/admin/restaurants/${id}/branches`}
                 headers={[
                     "Location",
                 ]}
@@ -38,7 +38,7 @@ const ShowRestaurants = () => {
             />
             <div className="mt-4">
                 <LoadingTable
-                    path={`/admin/companies/${id}/workers`}
+                    path={`/admin/restaurants/${id}/workers`}
                     headers={[
                         "Name",
                         "Email"
