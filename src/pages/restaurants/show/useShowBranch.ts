@@ -11,7 +11,7 @@ const useShowBranch = () => {
 
     const path = `/restaurants/${id}/branches`;
 
-    const [restaurant, setRestaurant] = useState({});
+    const [restaurant, setRestaurant] = useState(null);
 
     const {
         onFetch,
