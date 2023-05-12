@@ -47,6 +47,7 @@ const ShowRestaurants = () => {
                     addTitle="Add Worker"
                     createPath={`/restaurants/${id}/workers/create`}
                     canEdit={false}
+                    canDelete={false}
                 />
             </div>
         </>
