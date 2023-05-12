@@ -1,27 +1,15 @@
 import LoadingTable from "components/LoadingTable";
 import withNav from "hocs/withNav";
-import useFetch from "lib/useFetch";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import useShowBranch from "./useShowBranch";
 
 const ShowRestaurants = () => {
 
     const {
-        id
-    } = useParams();
-
-    const path = `/restaurants/${id}/branches`;
-
-    const [restaurant, setRestaurant] = useState({});
-
-    const {
-        onFetch,
         isFetching,
-    } = useFetch(`/admin/companies/${id}`, setRestaurant)
-
-    useEffect(() => {
-        onFetch()
-    }, [])
+        path,
+        restaurant,
+        id,
+    } = useShowBranch();
 
 
     if (isFetching) return null;
@@ -35,8 +23,6 @@ const ShowRestaurants = () => {
                         <h1>
                             {restaurant.name}
                         </h1>
-                        <p>{restaurant.email}</p>
-
                     </div>
                 </div>
             </div>
@@ -47,10 +33,22 @@ const ShowRestaurants = () => {
                 ]}
                 title="Branches"
                 addTitle="Add Branch"
-                editPath={`${path}`}
                 createPath={`${path}/create`}
                 canEdit={false}
             />
+            <div className="mt-4">
+                <LoadingTable
+                    path={`/admin/companies/${id}/workers`}
+                    headers={[
+                        "Name",
+                        "Email"
+                    ]}
+                    title="Workers"
+                    addTitle="Add Worker"
+                    createPath={`/restaurants/${id}/workers/create`}
+                    canEdit={false}
+                />
+            </div>
         </>
     )
 }
