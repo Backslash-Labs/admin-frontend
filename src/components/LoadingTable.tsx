@@ -1,6 +1,7 @@
 import useFetch from "lib/useFetch"
 import Table, { TableProps } from "./table/Table"
 import { FC, useEffect, useState } from "react"
+import ActivityIndicator from "base/ActivityIndicator";
 
 export interface LoadingTableProps extends TableProps {
 }
@@ -22,7 +23,7 @@ const LoadingTable: FC<LoadingTableProps> = ({path, ...others}) => {
         onFetch()
     }, [])
 
-    if(isFetching) return <h1>Loading.....</h1>
+    if(isFetching) return <ActivityIndicator />
 
     return(
         <Table

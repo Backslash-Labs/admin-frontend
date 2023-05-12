@@ -1,6 +1,7 @@
 import LoadingTable from "components/LoadingTable";
 import withNav from "hocs/withNav";
 import useShowBranch from "./useShowBranch";
+import ActivityIndicator from "base/ActivityIndicator";
 
 const ShowRestaurants = () => {
 
@@ -12,7 +13,7 @@ const ShowRestaurants = () => {
     } = useShowBranch();
 
 
-    if (isFetching) return null;
+    if (isFetching) return <ActivityIndicator />;
 
     return (
         <>
