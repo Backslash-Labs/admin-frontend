@@ -1,4 +1,4 @@
-import LoadingTable from "components/LoadingTable";
+import LoadingTable from "components/table/LoadingTable";
 import withNav from "hocs/withNav";
 import { useNavigate } from "react-router-dom";
 
@@ -11,7 +11,7 @@ const Restaurants = () => {
   return (
     <>
       <LoadingTable
-        path="/admin/companies"
+        path="/admin/restaurants"
         headers={[
           "Name",
           "Email",

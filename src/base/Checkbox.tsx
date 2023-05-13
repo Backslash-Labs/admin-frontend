@@ -1,39 +1,31 @@
-import { FC, InputHTMLAttributes } from "react";
+import useInput, { IUseInput } from "lib/useInput";
+import { FC } from "react";
 
-export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
-    label?: string
-    formik?: any
-    helperText?: string
+export interface CheckboxProps extends IUseInput {
+
 }
 
-const Checkbox: FC<CheckboxProps> = ({
-    label = "",
-    id,
-    name,
-    value,
-    formik,
-    onChange,
-    helperText,
-    ...others
-}) => {
+const Checkbox: FC<CheckboxProps> = (props) => {
 
-    let inputId = id || label.toLowerCase();
+    const {
+        label = "",
+        id,
+        name,
+        value,
+        formik,
+        onChange,
+        helperText,
+        ...others
+    } = props
 
-    const inputName = name || label.toLowerCase();
-    
-    let inputValue = value 
-    
-    if(!inputValue && formik){
-        inputValue = formik.values[inputName]
-    }
 
-    let handleChange = onChange
-    
-    if(!handleChange && formik){
-        handleChange = formik.handleChange
-    }
-
-    const _helperText = helperText || formik ? formik.errors[inputName] : undefined;
+    const {
+        inputName,
+        inputId,
+        inputValue,
+        handleChange,
+        inputHelperText,
+    } = useInput(props);
 
     return (
         <>
@@ -57,7 +49,7 @@ const Checkbox: FC<CheckboxProps> = ({
                             </label>
                             : null
                     }
-                    <p className="text-gray-500">{_helperText}</p>
+                    <p className="text-gray-500">{inputHelperText}</p>
                 </div>
             </div>
         </>

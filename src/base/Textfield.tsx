@@ -1,31 +1,24 @@
-import { FC, InputHTMLAttributes } from "react";
+import useInput, { IUseInput } from "lib/useInput";
+import { FC } from "react";
 
-export interface TextfieldProps extends InputHTMLAttributes<HTMLInputElement> {
-    label?: string
-    formik?: any
-    helperText?: string
+export interface TextfieldProps extends IUseInput {
+
 }
 
-const Textfield: FC<TextfieldProps> = ({
-    label,
-    id,
-    name,
-    type,
-    value,
-    formik,
-    onChange,
-    helperText,
-}) => {
+const Textfield: FC<TextfieldProps> = (props) => {
 
-    let inputId = id || label.toLowerCase();
+    const {
+        label,
+        type,
+    } = props;
 
-    const inputName = name || label.toLowerCase();
-
-    const inputValue = value || formik ? formik.values[inputName] : undefined;
-
-    const handleChange = onChange || formik ? formik.handleChange : undefined;
-
-    const _helperText = helperText || formik ? formik.errors[inputName] : undefined;
+    const {
+        inputName,
+        inputId,
+        inputValue,
+        handleChange,
+        inputHelperText,
+    } = useInput(props);
 
     return (
         <div className="">
@@ -46,7 +39,7 @@ const Textfield: FC<TextfieldProps> = ({
                     onChange={handleChange}
                 />
             </div>
-            <p>{_helperText}</p>
+            <p>{inputHelperText}</p>
         </div>
     )
 }

@@ -1,30 +1,19 @@
-import LoadingTable from "components/LoadingTable";
+import LoadingTable from "components/table/LoadingTable";
 import withNav from "hocs/withNav";
-import useFetch from "lib/useFetch";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import useShowBranch from "./useShowBranch";
+import ActivityIndicator from "base/ActivityIndicator";
 
 const ShowRestaurants = () => {
 
     const {
-        id
-    } = useParams();
-
-    const path = `/restaurants/${id}/branches`;
-
-    const [restaurant, setRestaurant] = useState({});
-
-    const {
-        onFetch,
         isFetching,
-    } = useFetch(`/admin/companies/${id}`, setRestaurant)
+        path,
+        restaurant,
+        id,
+    } = useShowBranch();
 
-    useEffect(() => {
-        onFetch()
-    }, [])
 
-
-    if (isFetching) return null;
+    if (isFetching || restaurant == null) return <ActivityIndicator />;
 
     return (
         <>
@@ -35,22 +24,34 @@ const ShowRestaurants = () => {
                         <h1>
                             {restaurant.name}
                         </h1>
-                        <p>{restaurant.email}</p>
-
                     </div>
                 </div>
             </div>
             <LoadingTable
-                path={`/admin/companies/${id}/branches`}
+                path={`/admin/restaurants/${id}/branches`}
                 headers={[
+                    "Name",
                     "Location",
                 ]}
                 title="Branches"
                 addTitle="Add Branch"
-                editPath={`${path}`}
                 createPath={`${path}/create`}
                 canEdit={false}
             />
+            <div className="mt-4">
+                <LoadingTable
+                    path={`/admin/restaurants/${id}/workers`}
+                    headers={[
+                        "Name",
+                        "Email"
+                    ]}
+                    title="Workers"
+                    addTitle="Add Worker"
+                    createPath={`/restaurants/${id}/workers/create`}
+                    canEdit={false}
+                    canDelete={false}
+                />
+            </div>
         </>
     )
 }
