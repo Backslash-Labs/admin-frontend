@@ -1,4 +1,4 @@
-import LoadingTable from "components/LoadingTable";
+import LoadingTable from "components/table/LoadingTable";
 import withNav from "hocs/withNav";
 
 const Users = () => {
@@ -9,6 +9,7 @@ const Users = () => {
                 headers={[
                     "Name",
                     "Email",
+                    "Role"
                 ]}
                 title="Users"
                 canEdit={false}

@@ -1,4 +1,4 @@
-import LoadingTable from "components/LoadingTable";
+import LoadingTable from "components/table/LoadingTable";
 import withNav from "hocs/withNav";
 import useShowBranch from "./useShowBranch";
 import ActivityIndicator from "base/ActivityIndicator";
@@ -13,7 +13,7 @@ const ShowRestaurants = () => {
     } = useShowBranch();
 
 
-    if (isFetching) return <ActivityIndicator />;
+    if (isFetching || restaurant == null) return <ActivityIndicator />;
 
     return (
         <>
@@ -30,6 +30,7 @@ const ShowRestaurants = () => {
             <LoadingTable
                 path={`/admin/restaurants/${id}/branches`}
                 headers={[
+                    "Name",
                     "Location",
                 ]}
                 title="Branches"
