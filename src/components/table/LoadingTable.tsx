@@ -1,5 +1,5 @@
 import useFetch from "lib/useFetch"
-import Table, { TableProps } from "./table/Table"
+import Table, { TableProps } from "./Table"
 import { FC, useEffect, useState } from "react"
 import ActivityIndicator from "base/ActivityIndicator";
 
