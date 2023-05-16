@@ -15,7 +15,7 @@ export default {
         "node"
     ],
     "modulePaths": [
-        "<rootDir>",
+        "<rootDir>/src",
     ],
     "moduleNameMapper": pathsToModuleNameMapper(config.compilerOptions.paths),
     "testPathIgnorePatterns": [

@@ -26,8 +26,8 @@ describe("<Restaurants />", () => {
                 {
                     name: "Cookie",
                     email: "cookie@mail.com",
-                    workspaces: 10,
-                    users: 2,
+                    allowed_branches: 10,
+                    allowed_users: 2,
                 }
             ]),
         );
@@ -38,10 +38,10 @@ describe("<Restaurants />", () => {
         expect(name).not.toBeNull();
         const email = screen.getByText("cookie@mail.com");
         expect(email).not.toBeNull();
-        const workspaces = screen.getByText("10");
-        expect(workspaces).not.toBeNull();
-        const users = screen.getByText("2");
-        expect(users).not.toBeNull();
+        const allowed_branches = screen.getByText("10");
+        expect(allowed_branches).not.toBeNull();
+        const allowed_users = screen.getByText("2");
+        expect(allowed_users).not.toBeNull();
     });
 
 

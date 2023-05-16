@@ -1,9 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 import { render } from "@testing-library/react"
 import { AppContext } from "../../src/contexts/AppContext"
-import { BrowserRouter, Route, RouterProvider, Routes, createMemoryRouter } from "react-router-dom";
+import { RouteObject, RouterProvider, createMemoryRouter } from "react-router-dom";
 
-export const withAppContext = (Component, currentUser = null) => {
+export const withAppContext = (Component: FC, currentUser: any = null) => {
     return (
         <AppContext.Provider value={{
             currentUser,
@@ -16,7 +16,7 @@ export const withAppContext = (Component, currentUser = null) => {
 
 }
 
-export const withRender = (routes, routerOptions) => {
+export const withRender = (routes: RouteObject[], routerOptions: any) => {
 
     const router = createMemoryRouter(routes, routerOptions)
 
