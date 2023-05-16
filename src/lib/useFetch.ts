@@ -1,5 +1,4 @@
-import { log } from "console";
-import React from "react";
+import { useState } from "react";
 
 let host = "http://localhost:8000";
 
@@ -7,7 +6,7 @@ const apiHost = `${host}/api`;
 
 const useFetch = (path: string, onSuccess: (body: any, headers?: Headers) => void, onError?: (res?: any) => void) => {
 
-    const [isFetching, setIsFetching] = React.useState(false);
+    const [isFetching, setIsFetching] = useState(false);
 
     const onFetch = async (method = 'get', body = undefined) => {
         const token = localStorage.getItem("token");
