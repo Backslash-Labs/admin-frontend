@@ -32,7 +32,7 @@ const Form = ({ formik }) => {
             setSelectedFeatures([...selectedFeatureIds]);
 
             console.log(selectedPlan);
-            
+
 
             formik.handleChange({
                 target: {
@@ -47,8 +47,8 @@ const Form = ({ formik }) => {
                 }
             })
 
-        }else{
-            setSelectedFeatures([ ]);
+        } else {
+            setSelectedFeatures([]);
         }
 
         formik.handleChange({ target })
@@ -74,6 +74,11 @@ const Form = ({ formik }) => {
                 <Textfield
                     label="Allowed Branches"
                     name="allowed_branches"
+                    formik={formik}
+                />
+                <Textfield
+                    label="Branch Location"
+                    name="branch_location"
                     formik={formik}
                 />
                 <Select

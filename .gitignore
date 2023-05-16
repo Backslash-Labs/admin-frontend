@@ -1,3 +1,5 @@
 .DS_Store
 node_modules
-.idea/
+.dockerignore
+docker-compose.yaml
+Dockerfile
