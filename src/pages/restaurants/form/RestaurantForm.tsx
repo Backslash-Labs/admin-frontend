@@ -18,6 +18,8 @@ const validationSchema = Yup.object().shape({
     .required(),
   plan_id: Yup.number()
     .required(),
+  branch_location: Yup.string()
+    .required(),
 });
 
 const ResturantForm = () => {
