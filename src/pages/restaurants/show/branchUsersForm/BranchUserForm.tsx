@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import withNav from "hocs/withNav";
 import * as Yup from "yup";
-import useWorkerForm from "./useWorkerForm";
+import useBranchUserForm from "./useBranchUserForm";
 import Textfield from "base/Textfield";
 import PrimaryButton from "base/PrimaryButton";
 import BranchSelect from "./BranchSelect";
@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
 });
 
 
-const WorkerForm = () => {
+const BranchUserForm = () => {
 
   const {
     onSubmit,
@@ -23,7 +23,7 @@ const WorkerForm = () => {
     branches,
     selectedBranches,
     setSelectedBranches,
-  } = useWorkerForm();
+  } = useBranchUserForm();
 
   const handleSubmit = (values) => {
     onSubmit({ ...values, branches: selectedBranches })
@@ -65,7 +65,7 @@ const WorkerForm = () => {
                 <PrimaryButton
                   isLoading={isFetching}
                 >
-                  Add Worker
+                  Add User
                 </PrimaryButton>
               </form>
             )
@@ -76,4 +76,4 @@ const WorkerForm = () => {
   )
 }
 
-export default withNav(WorkerForm);
+export default withNav(BranchUserForm);

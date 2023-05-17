@@ -7,7 +7,7 @@ import { AppContext } from 'contexts/AppContext';
 import Users from 'pages/users/index/Users';
 import ShowRestaurants from 'pages/restaurants/show/ShowRestaurants';
 import BranchForm from 'pages/restaurants/show/branchesForm/BranchForm';
-import WorkerForm from 'pages/restaurants/show/workersForm/WorkerForm';
+import BranchUserForm from 'pages/restaurants/show/branchUsersForm/BranchUserForm';
 
 export const routes = [
     {
@@ -41,8 +41,8 @@ export const routes = [
         name: "Restaurants",
     },
     {
-        path: "/restaurants/:restaurant_id/workers/create",
-        element: WorkerForm,
+        path: "/restaurants/:restaurant_id/branch_users/create",
+        element: BranchUserForm,
         name: "Restaurants",
     },
     {

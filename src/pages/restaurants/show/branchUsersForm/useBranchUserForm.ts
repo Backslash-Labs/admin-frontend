@@ -2,7 +2,7 @@ import useFetch from "lib/useFetch";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-const useWorkerForm = () => {
+const useBranchUserForm = () => {
 
     const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ const useWorkerForm = () => {
     const {
         onPost,
         isFetching,
-    } = useFetch(`/admin/restaurants/${restaurant_id}/workers`, () => {
+    } = useFetch(`/admin/restaurants/${restaurant_id}/branch_users`, () => {
         navigate(`/restaurants/${restaurant_id}`);
     })
 
@@ -43,4 +43,4 @@ const useWorkerForm = () => {
     }
 }
 
-export default useWorkerForm;
+export default useBranchUserForm;

@@ -40,14 +40,14 @@ const ShowRestaurants = () => {
             />
             <div className="mt-4">
                 <LoadingTable
-                    path={`/admin/restaurants/${id}/workers`}
+                    path={`/admin/restaurants/${id}/branch_users`}
                     headers={[
                         "Name",
                         "Email"
                     ]}
-                    title="Workers"
-                    addTitle="Add Worker"
-                    createPath={`/restaurants/${id}/workers/create`}
+                    title="Users"
+                    addTitle="Add User"
+                    createPath={`/restaurants/${id}/branch_users/create`}
                     canEdit={false}
                     canDelete={false}
                 />
