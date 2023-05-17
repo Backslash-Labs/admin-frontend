@@ -1,10 +1,10 @@
 import { withAppContext, withRender } from "../helper/withRender";
 import { act, fireEvent, screen } from "@testing-library/react";
-import WorkerForm from "pages/restaurants/show/workersForm/WorkerForm";
+import BranchUserForm from "pages/restaurants/show/branchUsersForm/BranchUserForm";
 import { onChange } from "../helper/onChange";
 
 const routerOptions = {
-    initialEntries: ["/restaurants/1/workers/create"]
+    initialEntries: ["/restaurants/1/branch_users/create"]
 };
 
 const routes = [
@@ -13,8 +13,8 @@ const routes = [
         element: null,
     },
     {
-        path: "/restaurants/:restaurant_id/workers/create",
-        element: withAppContext(WorkerForm, { name: "User" })
+        path: "/restaurants/:restaurant_id/branch_users/create",
+        element: withAppContext(BranchUserForm, { name: "User" })
     }
 ];
 
@@ -45,7 +45,7 @@ const cases = [
 const data = [
     {
         key: "Name",
-        value: "Worker Name"
+        value: "User Name"
     },
     {
         key: "Email",
@@ -53,14 +53,14 @@ const data = [
     }
 ]
 
-let onAddWorker = async () => {
-    const button = screen.getByText("Add Worker");
+let onAddBranchUser = async () => {
+    const button = screen.getByText("Add User");
     return act(async () => {
         await fireEvent.click(button)
     });
 }
 
-describe("<WorkerForm />", () => {
+describe("<BranchUserForm />", () => {
 
     let router;
 
@@ -85,7 +85,7 @@ describe("<WorkerForm />", () => {
         });
         const branch = screen.getByText("Branch 1");
         fireEvent.click(branch);
-        await onAddWorker();
+        await onAddBranchUser();
         expect(router.state.location.pathname).toBe("/restaurants/1");
     });
 
@@ -96,7 +96,7 @@ describe("<WorkerForm />", () => {
                 if (key === fields.key) onChange(key, fields.value);
                 else onChange(key, value);
             });
-            await onAddWorker();
+            await onAddBranchUser();
             const t = screen.getByText(expected);
             expect(t).not.toBeNull();
         })
