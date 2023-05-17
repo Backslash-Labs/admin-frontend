@@ -32,7 +32,7 @@ describe("<ShowRestaurants />", () => {
                         location: "Branch Location"
                     }
                 ])
-            } else if (req.url.endsWith("/workers")) {
+            } else if (req.url.endsWith("/branch_users")) {
                 body = JSON.stringify([
                     {
                         name: "User"
