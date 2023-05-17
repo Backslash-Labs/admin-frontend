@@ -44,7 +44,7 @@ const useRestaurantForm = () => {
 
 
     useEffect(() => {
-        onFetchRestaurant();
+        if(isEditing) onFetchRestaurant();
     }, [isEditing])
 
     const {
