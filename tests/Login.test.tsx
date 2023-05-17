@@ -39,7 +39,7 @@ describe("<Login />", () => {
         await act(async () => {
             await fireEvent.click(button)
         });
-        expect(router.router.state.location.pathname).toBe("/");
+        expect(router.state.location.pathname).toBe("/");
     });
 
     it("should not redirect when request was not successful", async () => {
@@ -59,7 +59,7 @@ describe("<Login />", () => {
         await act(async () => {
             await fireEvent.click(button)
         });
-        expect(router.router.state.location.pathname).toBe("/login");
+        expect(router.state.location.pathname).toBe("/login");
     });
 
 
@@ -73,7 +73,7 @@ describe("<Login />", () => {
         });
         const email = screen.findByText("Email is required");
         expect(email).not.toBeNull();
-        expect(router.router.state.location.pathname).toBe("/login");
+        expect(router.state.location.pathname).toBe("/login");
     });
 
 
@@ -87,7 +87,7 @@ describe("<Login />", () => {
         });
         const email = screen.findByText("Email is required");
         expect(email).not.toBeNull();
-        expect(router.router.state.location.pathname).toBe("/login");
+        expect(router.state.location.pathname).toBe("/login");
     });
 
 })

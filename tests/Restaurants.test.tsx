@@ -3,16 +3,12 @@ import { act, screen } from "@testing-library/react";
 import Restaurants from "pages/restaurants/index/Restaurants";
 
 const routerOptions = {
-    initialEntries: ["/restaurants"]
+    initialEntries: ["/"]
 };
 
 const routes = [
     {
         path: "/",
-        element: null,
-    },
-    {
-        path: "/restaurants",
         element: withAppContext(Restaurants, { name: "User" })
     }
 ];

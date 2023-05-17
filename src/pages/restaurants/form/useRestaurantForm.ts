@@ -13,8 +13,8 @@ const useRestaurantForm = () => {
     const [restaurant, setRestaurant] = useState({
         name: "",
         email: "",
-        users: 0,
-        workspaces: 0,
+        allowed_users: 0,
+        allowed_branches: 0,
         plan_id: null,
     });
 

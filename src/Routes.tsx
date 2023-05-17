@@ -9,7 +9,7 @@ import ShowRestaurants from 'pages/restaurants/show/ShowRestaurants';
 import BranchForm from 'pages/restaurants/show/branchesForm/BranchForm';
 import WorkerForm from 'pages/restaurants/show/workersForm/WorkerForm';
 
-const routes = [
+export const routes = [
     {
         path: "/",
         element: Restaurants,
@@ -45,6 +45,11 @@ const routes = [
         element: WorkerForm,
         name: "Restaurants",
     },
+    {
+        path: "/sign_in",
+        element: Login,
+        auth: false
+    }
 ]
 
 
@@ -67,35 +72,29 @@ const Routes = () => {
 
     return (
         <AppContext.Provider value={appContext}>
-            <BrowserRouter>
-                <ReactRoutes>
-                    <Route
-                        path='/sign_in'
-                        element={<Login />}
-                    />
-                    {
-                        routes.map(({ path, element: Element, ...others }, i) => {
+            <ReactRoutes>
+                {
+                    routes.map(({ path, element: Element, auth, ...others }, i) => {
 
-                            if (!isLoading && !currentUser) return (
-                                <Route
-                                    path={path}
-                                    key={i}
-                                    element={<Navigate
-                                        to="/sign_in"
-                                        replace
-                                    />}
-                                />
-                            );
-
-                            return (<Route
-                                key={i}
+                        if (auth && !isLoading && !currentUser) return (
+                            <Route
                                 path={path}
-                                element={<Element {...others} />}
-                            />)
-                        })
-                    }
-                </ReactRoutes>
-            </BrowserRouter>
+                                key={i}
+                                element={<Navigate
+                                    to="/sign_in"
+                                    replace
+                                />}
+                            />
+                        );
+
+                        return (<Route
+                            key={i}
+                            path={path}
+                            element={<Element {...others} />}
+                        />)
+                    })
+                }
+            </ReactRoutes>
         </AppContext.Provider>
     );
 }
