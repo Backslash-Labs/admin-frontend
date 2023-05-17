@@ -1,7 +1,7 @@
-import { withAppContext, withRender } from "./helper/withRender";
+import { withAppContext, withRender } from "../helper/withRender";
 import { act, fireEvent, screen } from "@testing-library/react";
 import RestaurantForm from "pages/restaurants/form/RestaurantForm";
-import { onChange } from "./helper/onChange";
+import { onChange } from "../helper/onChange";
 
 const routerOptions = {
     initialEntries: ["/restaurants/create"]
