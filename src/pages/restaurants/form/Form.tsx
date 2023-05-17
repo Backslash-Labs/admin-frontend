@@ -18,40 +18,44 @@ const Form = ({ formik }) => {
             value
         } = target;
 
-        // get plan by id
+        try {
+            // get plan by id
 
-        // compare with == because value is a string
-        let selectedPlans = plans.filter((plan) => plan.id == value);
-
-        if (value) {
-
-            let selectedPlan = selectedPlans[0];
-
-            let selectedFeatureIds = selectedPlan.plan_features.map((feature) => feature.feature.id);
-
-            setSelectedFeatures([...selectedFeatureIds]);
-
-            console.log(selectedPlan);
+            // compare with == because value is a string
+            let selectedPlans = plans.filter((plan) => plan.id == value);
 
 
-            formik.handleChange({
-                target: {
-                    name: "allowed_users",
-                    value: selectedPlan.allowed_users,
-                }
-            })
-            formik.handleChange({
-                target: {
-                    name: "allowed_branches",
-                    value: selectedPlan.allowed_branches,
-                }
-            })
 
-        } else {
-            setSelectedFeatures([]);
+            if (value) {
+
+                let selectedPlan = selectedPlans[0];
+
+                let selectedFeatureIds = selectedPlan.plan_features.map((feature) => feature.feature.id);
+
+                setSelectedFeatures([...selectedFeatureIds]);
+
+                formik.handleChange({
+                    target: {
+                        name: "allowed_users",
+                        value: selectedPlan.allowed_users,
+                    }
+                })
+                formik.handleChange({
+                    target: {
+                        name: "allowed_branches",
+                        value: selectedPlan.allowed_branches,
+                    }
+                })
+
+            } else {
+                setSelectedFeatures([]);
+            }
+
+            formik.handleChange({ target })
+        } catch (e) {
+            console.log(e);
+
         }
-
-        formik.handleChange({ target })
     }
 
 

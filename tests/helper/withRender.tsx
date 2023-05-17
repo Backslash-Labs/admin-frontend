@@ -22,5 +22,6 @@ export const withRender = (routes: RouteObject[], routerOptions: any) => {
 
     render(<RouterProvider router={router} />)
 
-    return { router };
+    return router
+
 }
