@@ -13,6 +13,7 @@ const useFetch = (path: string, onSuccess: (body: any, headers?: Headers) => voi
         const _path = path.endsWith('/') ? path.substr(0, path.length - 1) : path;
         try {
             setIsFetching(true);
+            console.log(`[${method}] ${path}`);
             const res = await fetch(`${apiHost}${_path}`, {
                 method,
                 headers: {
@@ -34,7 +35,7 @@ const useFetch = (path: string, onSuccess: (body: any, headers?: Headers) => voi
                 if (onError) onError(res);
             }
         } catch (e) {
-            console.log(e);
+            console.log("here", e);
             if (onError) onError();
         } finally {
             setIsFetching(false)
