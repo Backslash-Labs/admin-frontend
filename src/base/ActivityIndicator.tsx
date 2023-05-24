@@ -1,7 +1,11 @@
+import { CircularProgress } from "@mui/material";
+
 const ActivityIndicator = () => {
-    return(
-        <h2>Loading....</h2>
-    )
-}
+  return (
+    <div>
+      <CircularProgress />
+    </div>
+  );
+};
 
 export default ActivityIndicator;

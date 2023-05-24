@@ -6,20 +6,14 @@ import Textfield from "base/Textfield";
 import PrimaryButton from "base/PrimaryButton";
 
 const validationSchema = Yup.object().shape({
-  location: Yup.string()
-    .required(),
+  location: Yup.string().required(),
 });
 
 const BranchForm = () => {
-
-  const {
-    onSubmit,
-    isFetching,
-  } = useBranchForm();
+  const { onSubmit, isFetching } = useBranchForm();
 
   return (
     <>
-
       <div>
         <Formik
           initialValues={{
@@ -28,25 +22,16 @@ const BranchForm = () => {
           onSubmit={onSubmit}
           validationSchema={validationSchema}
         >
-          {
-            (formik) => (
-              <form action="" onSubmit={formik.handleSubmit}>
-                <Textfield
-                  label="Location"
-                  formik={formik}
-                />
-                <PrimaryButton
-                  isLoading={isFetching}
-                >
-                  Add Branch
-                </PrimaryButton>
-              </form>
-            )
-          }
+          {(formik) => (
+            <form action="" onSubmit={formik.handleSubmit}>
+              <Textfield label="Location" formik={formik} />
+              <PrimaryButton isLoading={isFetching}>Add Branch</PrimaryButton>
+            </form>
+          )}
         </Formik>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default withNav(BranchForm);
