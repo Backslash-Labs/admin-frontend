@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-let host = "http://localhost:8000";
+export let host = process.env.NODE_ENV === "production" ? "https://lofty-apex-386519.uc.r.appspot.com" : "http://localhost:8000";
 
 const apiHost = `${host}/api`;
 

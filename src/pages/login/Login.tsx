@@ -28,7 +28,9 @@ const Login = () => {
       password: "",
     },
     onSubmit,
-    validationSchema
+    validationSchema,
+    validateOnChange: false,
+    validateOnBlur: false,
   });
 
   return (

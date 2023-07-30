@@ -74,7 +74,7 @@ const Routes = () => {
         <AppContext.Provider value={appContext}>
             <ReactRoutes>
                 {
-                    routes.map(({ path, element: Element, auth, ...others }, i) => {
+                    routes.map(({ path, element: Element, auth = true, ...others }, i) => {
 
                         if (auth && !isLoading && !currentUser) return (
                             <Route
