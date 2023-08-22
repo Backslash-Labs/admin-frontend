@@ -1,19 +1,21 @@
-import { log } from "console";
-import React from "react";
+import { useState } from "react";
 
-let host = "http://localhost:8000";
+const useFetch = (path: string, onSuccess: (body: any, headers?: Headers) => void, onError?: (res?: any) => void) => {
 
-const apiHost = `${host}/api`;
 
-const useFetch = (path: string, onSuccess: (body: any, headers?: Headers) => void, onError?: (res: any) => void) => {
-
-    const [isFetching, setIsFetching] = React.useState(false);
+    const [isFetching, setIsFetching] = useState(false);
 
     const onFetch = async (method = 'get', body = undefined) => {
+
+        let host = import.meta.env.VITE_API_HOST;        
+    
+        const apiHost = `${host}/api`;
+
         const token = localStorage.getItem("token");
         const _path = path.endsWith('/') ? path.substr(0, path.length - 1) : path;
         try {
             setIsFetching(true);
+            console.log(`[${method}] ${path}`);
             const res = await fetch(`${apiHost}${_path}`, {
                 method,
                 headers: {
@@ -36,7 +38,7 @@ const useFetch = (path: string, onSuccess: (body: any, headers?: Headers) => voi
             }
         } catch (e) {
             console.log(e);
-
+            if (onError) onError();
         } finally {
             setIsFetching(false)
         }

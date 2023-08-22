@@ -13,8 +13,8 @@ const useRestaurantForm = () => {
     const [restaurant, setRestaurant] = useState({
         name: "",
         email: "",
-        users: 0,
-        workspaces: 0,
+        allowed_users: 0,
+        allowed_branches: 0,
         plan_id: null,
     });
 
@@ -31,7 +31,7 @@ const useRestaurantForm = () => {
     const {
         onFetch: onFetchRestaurant,
         isFetching: isFetchingRestaurant,
-    } = useFetch(`/admin/companies/${id}`, (body) => {
+    } = useFetch(`/admin/restaurants/${id}`, (body) => {
         setRestaurant({ ...body })
     });
 
@@ -44,13 +44,13 @@ const useRestaurantForm = () => {
 
 
     useEffect(() => {
-        onFetchRestaurant();
+        if(isEditing) onFetchRestaurant();
     }, [isEditing])
 
     const {
         onPost,
         isFetching,
-    } = useFetch("/admin/companies", () => {
+    } = useFetch("/admin/restaurants", () => {
         navigate("/");
     })
 
