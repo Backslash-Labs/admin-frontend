@@ -1,14 +1,16 @@
 import { useState } from "react";
 
-export let host = process.env.NODE_ENV === "production" ? "https://api.chem-pe.com" : "http://localhost:8000";
-
-const apiHost = `${host}/api`;
-
 const useFetch = (path: string, onSuccess: (body: any, headers?: Headers) => void, onError?: (res?: any) => void) => {
+
 
     const [isFetching, setIsFetching] = useState(false);
 
     const onFetch = async (method = 'get', body = undefined) => {
+
+        let host = import.meta.env.VITE_API_HOST;        
+    
+        const apiHost = `${host}/api`;
+
         const token = localStorage.getItem("token");
         const _path = path.endsWith('/') ? path.substr(0, path.length - 1) : path;
         try {
@@ -35,7 +37,7 @@ const useFetch = (path: string, onSuccess: (body: any, headers?: Headers) => voi
                 if (onError) onError(res);
             }
         } catch (e) {
-            console.log("here", e);
+            console.log(e);
             if (onError) onError();
         } finally {
             setIsFetching(false)
