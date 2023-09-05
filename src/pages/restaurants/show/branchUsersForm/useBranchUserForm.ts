@@ -6,6 +6,10 @@ const useBranchUserForm = () => {
 
     const navigate = useNavigate();
 
+    const [asyncErrors, setAsyncErrors] = useState({
+
+    });
+
     const {
         restaurant_id,
     } = useParams();
@@ -15,6 +19,11 @@ const useBranchUserForm = () => {
         isFetching,
     } = useFetch(`/admin/restaurants/${restaurant_id}/branch_users`, () => {
         navigate(`/restaurants/${restaurant_id}`);
+    }, async (res: Response) => {
+        if(res.status == 422){
+            const body = await res.json();     
+            setAsyncErrors(body.errors);
+        }
     })
 
     const onSubmit = (values) => onPost(values);
@@ -40,6 +49,7 @@ const useBranchUserForm = () => {
         branches,
         selectedBranches,
         setSelectedBranches,
+        asyncErrors,
     }
 }
 

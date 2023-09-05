@@ -10,8 +10,7 @@ const validationSchema = Yup.object().shape({
   name: Yup.string()
     .required(),
   email: Yup.string()
-    .email()
-    .required(),
+    .email(),
 });
 
 
@@ -23,6 +22,7 @@ const BranchUserForm = () => {
     branches,
     selectedBranches,
     setSelectedBranches,
+    asyncErrors,
   } = useBranchUserForm();
 
   const handleSubmit = (values) => {
@@ -47,19 +47,46 @@ const BranchUserForm = () => {
                 <Textfield
                   label="Name"
                   formik={formik}
+                  asyncErrors={asyncErrors}
                 />
                 <Textfield
                   label="Email"
                   formik={formik}
+                  asyncErrors={asyncErrors}
                 />
-                <div className="grid grid-cols-3 mt-2 gap-2">
+                <Textfield
+                  label="Username"
+                  formik={formik}
+                  asyncErrors={asyncErrors}
+                />
+                <Textfield
+                  label="Password"
+                  formik={formik}
+                  type="password"
+                  asyncErrors={asyncErrors}
+                />
+                <Textfield
+                  name="password_confirmation"
+                  label="Password Confirmation"
+                  formik={formik}
+                  type="password"
+                  asyncErrors={asyncErrors}
+                />
+                <div className="mb-2">
+                  <div className="grid grid-cols-3 mt-2 gap-2">
+                    {
+                      branches.map((branch, i) => <BranchSelect
+                        key={i}
+                        branch={branch}
+                        selectedBranches={selectedBranches}
+                        setSelectedBranches={setSelectedBranches}
+                      />)
+                    }
+                  </div>
                   {
-                    branches.map((branch, i) => <BranchSelect
-                      key={i}
-                      branch={branch}
-                      selectedBranches={selectedBranches}
-                      setSelectedBranches={setSelectedBranches}
-                    />)
+                    asyncErrors["branches"] ?
+                      <p className="text-[#DC143C] capitalize text-[12px] mt-[5px] bg-[#FFF0F0]">{asyncErrors["branches"][0]}</p>
+                      : null
                   }
                 </div>
                 <PrimaryButton

@@ -1,9 +1,11 @@
 import { InputHTMLAttributes } from "react";
 
-export interface IUseInput extends InputHTMLAttributes<HTMLInputElement | HTMLSelectElement>  {
+export interface IUseInput extends InputHTMLAttributes<HTMLInputElement | HTMLSelectElement> {
     label?: string
     formik?: any
     helperText?: string
+    margin?: boolean
+    asyncErrors?: any
 }
 
 const useInput = (options: IUseInput) => {
@@ -16,11 +18,18 @@ const useInput = (options: IUseInput) => {
         formik,
         onChange,
         helperText,
+        placeholder,
+        asyncErrors,
     } = options;
 
     let inputId = id || label.toLowerCase();
 
-    const inputName = name || label.toLowerCase();
+    let inputName = name;
+
+    if (!inputName) {
+        if (placeholder) inputName = placeholder.toLowerCase();
+        else inputName = label.toLowerCase();
+    }
 
     let inputValue = value
 
@@ -30,7 +39,18 @@ const useInput = (options: IUseInput) => {
 
     if (!handleChange && formik) handleChange = formik.handleChange
 
-    const inputHelperText = helperText || formik ? formik.errors[inputName] : undefined;
+    let inputHelperText = helperText;
+
+    if (asyncErrors && asyncErrors[inputName]) {
+        inputHelperText = asyncErrors[inputName]
+    }
+
+    if (!inputHelperText && formik) {
+        inputHelperText = formik.errors[inputName];
+    }
+
+    console.log(inputHelperText);
+    
 
     return {
         inputId,
