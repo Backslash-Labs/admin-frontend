@@ -9,8 +9,11 @@ import BranchSelect from "./BranchSelect";
 const validationSchema = Yup.object().shape({
   name: Yup.string()
     .required(),
-  email: Yup.string()
-    .email(),
+  username: Yup.string()
+    .required(),
+  password: Yup.string()
+    .min(8)
+    .required()
 });
 
 

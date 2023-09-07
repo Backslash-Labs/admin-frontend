@@ -5,8 +5,7 @@ import * as Yup from "yup";
 import useLogin from "./useLogin";
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string()
-    .email()
+  key: Yup.string()
     .required(),
   password: Yup.string()
     .min(8)
@@ -24,7 +23,7 @@ const Login = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: "",
+      key: "",
       password: "",
     },
     onSubmit,
@@ -50,7 +49,8 @@ const Login = () => {
             <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
               <form className="space-y-6" action="" onSubmit={formik.handleSubmit}>
                 <Textfield
-                  label="Email"
+                  name="key"
+                  label="Email or Username"
                   formik={formik}
                 />
                 <Textfield
