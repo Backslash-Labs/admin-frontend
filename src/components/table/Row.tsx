@@ -2,6 +2,9 @@ import { FC, useContext } from "react";
 import { TableContext } from "./TableContext";
 import useFetch from "lib/useFetch";
 import { Link } from "react-router-dom";
+import { ModalContext } from "components/modal/ModalContext";
+import ConfirmModal from "components/modal/ConfirmModal";
+import useModal from "components/modal/useModal";
 
 export interface RowProps {
     row: any
@@ -19,6 +22,7 @@ const Row: FC<RowProps> = ({ row, i }) => {
         canDelete = true,
         editPath,
         onClick,
+        title,
     } = useContext(TableContext);
 
     const {
@@ -28,8 +32,15 @@ const Row: FC<RowProps> = ({ row, i }) => {
         setRows([...rows]);
     });
 
-    const handleDelete = () => {
+    const deleteModalHook = useModal();
+
+    const onConfirmDelete = () => {
         onDelete();
+    }
+
+    const handleDelete = (event: Event) => {
+        event.stopPropagation();
+        deleteModalHook.onOpen();
     }
 
     const handleClick = () => {
@@ -74,6 +85,20 @@ const Row: FC<RowProps> = ({ row, i }) => {
                             Delete
                         </button>
                     </td>
+                    : null
+            }
+            {
+                canDelete ?
+                    <ModalContext.Provider
+                        value={deleteModalHook}
+                    >
+                        <ConfirmModal
+                            onConfirm={onConfirmDelete}
+                            title={`Delete ${title}`}
+                            text="Are you sure you want to delete this? All of your data will be permanently removed
+                                from our servers forever. This action cannot be undone."
+                        />
+                    </ModalContext.Provider>
                     : null
             }
         </tr>
