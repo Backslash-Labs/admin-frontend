@@ -23,6 +23,8 @@ const Row: FC<RowProps> = ({ row, i }) => {
         editPath,
         onClick,
         title,
+        canShow = false,
+        showPath,
     } = useContext(TableContext);
 
     const {
@@ -43,12 +45,8 @@ const Row: FC<RowProps> = ({ row, i }) => {
         deleteModalHook.onOpen();
     }
 
-    const handleClick = () => {
-        onClick(row);
-    }
-
     return (
-        <tr onClick={handleClick}>
+        <tr>
             {
                 headers.map((header, j) => {
 
@@ -74,6 +72,15 @@ const Row: FC<RowProps> = ({ row, i }) => {
                     <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                         <Link to={`${editPath}/${row.id}/edit`} className="text-green-600 hover:text-green-900">
                             Edit
+                        </Link>
+                    </td>
+                    : null
+            }
+            {
+                canShow ?
+                    <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                        <Link to={`${showPath}/${row.id}`} className="text-green-600 hover:text-green-900">
+                            Show
                         </Link>
                     </td>
                     : null
