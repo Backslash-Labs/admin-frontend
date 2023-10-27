@@ -19,6 +19,7 @@ const Login = () => {
   const {
     isFetching,
     onSubmit,
+    asyncErrors,
   } = useLogin();
 
   const formik = useFormik({
@@ -52,6 +53,7 @@ const Login = () => {
                   name="key"
                   label="Email or Username"
                   formik={formik}
+                  asyncErrors={asyncErrors}
                 />
                 <Textfield
                   label="Password"

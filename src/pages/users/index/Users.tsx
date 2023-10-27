@@ -12,8 +12,8 @@ const Users = () => {
                     "Role"
                 ]}
                 title="Users"
-                canEdit={false}
                 addTitle="Add User"
+                editPath="/users"
             />
         </>
     )
