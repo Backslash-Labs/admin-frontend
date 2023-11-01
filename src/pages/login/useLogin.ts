@@ -25,7 +25,7 @@ const useLogin = () => {
         setCurrentUser(body);
         navigate("/");
     }, async (res: Response) => {
-        if(res.status == 422){
+        if(res.status == 401){
             const body = await res.json();
             setAsyncErrors(body.errors);
         }

@@ -5,6 +5,7 @@ export interface IResturantFormContext {
     selectedFeatures: number[]
     setSelectedFeatures: React.Dispatch<React.SetStateAction<any[]>>
     isFetching: boolean
+    isEditing: boolean;
 }
 
 export const ResturantFormContext = createContext<IResturantFormContext>(null);

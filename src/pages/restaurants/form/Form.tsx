@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { ResturantFormContext } from "./RestaurantFormContext";
 
 const Form = ({ formik }) => {
-  const { setSelectedFeatures, plans, isFetching } =
+  const { setSelectedFeatures, plans, isFetching, isEditing } =
     useContext(ResturantFormContext);
 
   const onChangePlan = ({ target }) => {
@@ -64,11 +64,17 @@ const Form = ({ formik }) => {
           name="allowed_branches"
           formik={formik}
         />
-        <Textfield
-          label="Branch Location"
-          name="branch_location"
-          formik={formik}
-        />
+        {
+          !isEditing ?
+            (
+              <Textfield
+                label="Branch Location"
+                name="branch_location"
+                formik={formik}
+              />
+            )
+            : null
+        }
         <Select
           label="Plan"
           name="plan_id"
@@ -82,7 +88,14 @@ const Form = ({ formik }) => {
             <FeatureCheckbox key={i} feature={plan_feature.feature} />
           ))
         }
-        <PrimaryButton isLoading={isFetching}>Add Restaurant</PrimaryButton>
+        <PrimaryButton
+          isLoading={isFetching}
+        >
+          {
+            `${isEditing ? "Update" : "Add"} `
+          }
+          Restaurant
+        </PrimaryButton>
       </form>
     </>
   );
