@@ -17,6 +17,7 @@ const useRestaurantForm = () => {
         allowed_branches: 0,
         plan_id: null,
         features: [],
+        subscription: "Monthly",
     });
 
     const {

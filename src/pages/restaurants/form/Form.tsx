@@ -76,6 +76,23 @@ const Form = ({ formik }) => {
             : null
         }
         <Select
+          label="Subscription Type"
+          name="subscription"
+          formik={formik}
+          options={
+            [
+              {
+                name: "Yearly",
+                value: "Yearly",
+              },
+              {
+                name: "Monthly",
+                value: "Monthly",
+              },
+            ]
+          }
+        />
+        <Select
           label="Plan"
           name="plan_id"
           onChange={onChangePlan}

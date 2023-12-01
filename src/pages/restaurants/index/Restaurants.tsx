@@ -15,6 +15,11 @@ const Restaurants = () => {
         headers={[
           "Name",
           "Email",
+          "Subscription",
+          {
+            name: "Due",
+            key: "next_payment_at",
+          },
           {
             name: "Allowed Users",
             key: "allowed_users",
