@@ -15,6 +15,7 @@ const user = {
 const navigation = [
     { name: 'Restaurants', href: '/', },
     { name: 'Users', href: '/users',  },
+    { name: 'Transactions', href: '/transactions',  },
 ]
 const userNavigation = [
     { name: 'Your Profile', href: '#' },

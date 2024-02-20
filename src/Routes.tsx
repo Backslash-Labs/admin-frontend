@@ -9,6 +9,7 @@ import ShowRestaurants from 'pages/restaurants/show/ShowRestaurants';
 import BranchForm from 'pages/restaurants/show/branchesForm/BranchForm';
 import BranchUserForm from 'pages/restaurants/show/branchUsersForm/BranchUserForm';
 import UserForm from 'pages/users/form/UserForm';
+import Transactions from 'pages/transactions/Transactions';
 
 export const routes = [
     {
@@ -58,6 +59,10 @@ export const routes = [
     {
         path: "/users/:id/edit",
         element: UserForm
+    },
+    {
+        path: "/transactions",
+        element: Transactions
     },
 ]
 
