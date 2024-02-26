@@ -4,6 +4,7 @@ import Select from "base/Select";
 import Textfield from "base/Textfield";
 import { useContext } from "react";
 import { ResturantFormContext } from "./RestaurantFormContext";
+import Checkbox from "base/Checkbox";
 
 const Form = ({ formik }) => {
   const { setSelectedFeatures, plans, isFetching, isEditing } =
@@ -75,6 +76,13 @@ const Form = ({ formik }) => {
             )
             : null
         }
+        <Checkbox
+          name="upfront"
+          label={"Upfront Payment"}
+          checked={formik.upfront}
+          onChange={formik.handleChange}
+          value={formik.upfront}
+        />
         <Select
           label="Subscription Type"
           name="subscription"
