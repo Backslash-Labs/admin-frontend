@@ -79,9 +79,9 @@ const Form = ({ formik }) => {
         <Checkbox
           name="upfront"
           label={"Upfront Payment"}
-          checked={formik.upfront}
+          checked={formik.values.upfront}
           onChange={formik.handleChange}
-          value={formik.upfront}
+          value={formik.values.upfront}
         />
         <Select
           label="Subscription Type"

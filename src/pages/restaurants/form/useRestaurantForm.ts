@@ -18,6 +18,7 @@ const useRestaurantForm = () => {
         plan_id: null,
         features: [],
         subscription: "Monthly",
+        upfront: false,
     });
 
     const {
