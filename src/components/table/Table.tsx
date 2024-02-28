@@ -15,6 +15,8 @@ export interface TableProps {
   editPath?: string
   onClick?: (row: any) => void
   createPath?: string
+  showPath?: string
+  canShow?: boolean
 }
 
 const Table: FC<TableProps> = (props) => {

@@ -23,6 +23,8 @@ const Row: FC<RowProps> = ({ row, i }) => {
         editPath,
         onClick,
         title,
+        canShow = false,
+        showPath,
     } = useContext(TableContext);
 
     const {
@@ -43,22 +45,36 @@ const Row: FC<RowProps> = ({ row, i }) => {
         deleteModalHook.onOpen();
     }
 
-    const handleClick = () => {
-        onClick(row);
-    }
-
     return (
-        <tr onClick={handleClick}>
+        <tr>
             {
                 headers.map((header, j) => {
 
-                    if (typeof header === "object") return (
-                        <td key={j} className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                            {
-                                row[header.key.toLowerCase()]
-                            }
-                        </td>
-                    )
+                    if (typeof header === "object") {
+
+                        if (header.Component) {
+
+                            let {
+                                Component
+                            } = header;
+
+                            return (
+                                <td key={j} className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                    {
+                                        <Component header={header} row={row} setRows={setRows} index={i} rows={rows} onRemoveItemById={handleDelete} />
+                                    }
+                                </td>
+                            )
+                        }
+
+                        return (
+                            <td key={j} className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                {
+                                    row[header.key.toLowerCase()]
+                                }
+                            </td>
+                        )
+                    }
 
                     return (
                         <td key={j} className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
@@ -74,6 +90,15 @@ const Row: FC<RowProps> = ({ row, i }) => {
                     <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                         <Link to={`${editPath}/${row.id}/edit`} className="text-green-600 hover:text-green-900">
                             Edit
+                        </Link>
+                    </td>
+                    : null
+            }
+            {
+                canShow ?
+                    <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                        <Link to={`${showPath}/${row.id}`} className="text-green-600 hover:text-green-900">
+                            Show
                         </Link>
                     </td>
                     : null

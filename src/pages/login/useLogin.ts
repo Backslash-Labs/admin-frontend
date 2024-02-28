@@ -1,6 +1,6 @@
 import { AppContext } from "contexts/AppContext";
 import useFetch from "lib/useFetch";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const useLogin = () => {
@@ -11,6 +11,10 @@ const useLogin = () => {
         setCurrentUser
     } = useContext(AppContext);
 
+    const [asyncErrors, setAsyncErrors] = useState({
+        email: []
+    })
+
     const {
         onPost,
         isFetching,
@@ -20,6 +24,11 @@ const useLogin = () => {
         localStorage.setItem("token", token);
         setCurrentUser(body);
         navigate("/");
+    }, async (res: Response) => {
+        if(res.status == 401){
+            const body = await res.json();
+            setAsyncErrors(body.errors);
+        }
     })
 
     const onSubmit = (values) => onPost(values);
@@ -27,6 +36,7 @@ const useLogin = () => {
     return {
         onSubmit,
         isFetching,
+        asyncErrors,
     }
 }
 

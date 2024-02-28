@@ -16,6 +16,9 @@ const useRestaurantForm = () => {
         allowed_users: 0,
         allowed_branches: 0,
         plan_id: null,
+        features: [],
+        subscription: "Monthly",
+        upfront: false,
     });
 
     const {
@@ -54,12 +57,22 @@ const useRestaurantForm = () => {
         navigate("/");
     })
 
-    const onSubmit = (values) => onPost(values);
+    const {
+        onPut,
+        isFetching: isUpdating,
+    } = useFetch(`/admin/restaurants/${id}`, () => {
+        navigate(-1);
+    })
+
+
+    const onSubmit = (values) => {
+        isEditing ? onPut(values) : onPost(values);
+    }
 
     return {
         plans,
         onSubmit,
-        isFetching,
+        isFetching: isFetching || isUpdating,
         isFetchingPlans,
         isEditing,
         restaurant,

@@ -27,6 +27,7 @@ const useShowBranch = () => {
         path,
         isFetching,
         id,
+        setRestaurant,
     }
 }
 
